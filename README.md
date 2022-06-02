@@ -5,11 +5,11 @@ This app is created to practice fundamentals of IOS application development.
 
 ## App Features
 App users are able to proceed following features ; 
-1. Create an alert
-2. Delete an alert
-3. Update an alert
-4. Set an alert music, date, schedule
-5. Create multiple alerts
+1. Create an alarm
+2. Delete an alarm
+3. Update an alarm
+4. Set an alarm music, date, schedule
+5. Create multiple alarms
 
 ## Project Management
 1. Planning (~3 Hours)

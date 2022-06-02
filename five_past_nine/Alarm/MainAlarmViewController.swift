@@ -1,6 +1,6 @@
 //
 //  MainAlarmViewController.swift
-//  WeatherAlarm
+//  FivePastNine Alarm App
 //
 //  Hasan Özdemir
 // 

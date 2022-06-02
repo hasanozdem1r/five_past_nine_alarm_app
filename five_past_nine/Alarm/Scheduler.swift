@@ -1,6 +1,6 @@
 //
 //  Scheduler.swift
-//  Alarm-ios8-swift
+//  FivePastNine Alarm App
 //
 //  Hasan Özdemir
 // 
