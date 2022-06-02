@@ -10,7 +10,7 @@ import MediaPlayer
 
 struct Alarm
 {
-    //using memberwise initializer for struct
+    //using member wise initializer for struct
     var label: String
     var timeStr: String
     var date: Date
@@ -34,14 +34,11 @@ class Alarms: Sequence
     fileprivate init()
     {
         ud = UserDefaults.standard
-//      for key in ud.dictionaryRepresentation().keys {
-//            NSUserDefaults.standardUserDefaults().removeObjectForKey(key.description)
-//        }
+
         alarmKey = "myAlarmKey"
         alarms = getAllAlarm()
     }
     
-    //above swift 1.2
     static let sharedInstance = Alarms()
     
     //setObject only support "property list objects",so we cannot persist alarms directly
@@ -77,7 +74,6 @@ class Alarms: Sequence
     }
     
     //helper, convert dictionary to [Alarm]
-    //better if we can get the property name as a string, but Swift does not have any reflection feature now...
     fileprivate func getAllAlarm() -> [Alarm]
     {
         let alarmArray = UserDefaults.standard.array(forKey: alarmKey)
@@ -113,8 +109,7 @@ class Alarms: Sequence
         }
 
     }
-    // the design is not that good, but let me know if you hav an improve version.
-    //helpers for alarm edit. maybe not a good design
+    //helpers for alarm edit
     func labelAtIndex(_ index: Int) -> String
     {
         return alarms[index].label

@@ -27,13 +27,12 @@ class MainAlarmViewController: UITableViewController{
         if Alarms.sharedInstance.count != 0
         {
             self.navigationItem.leftBarButtonItem = editButtonItem
-            //self.navigationItem.leftBarButtonItem?.tintColor = UIColor.redColor()
         }
         else
         {
             self.navigationItem.leftBarButtonItem = nil
         }
-        //unschedule all the notifications, faster than calling the cancelAllNotifications func
+        //unschedule all the notifications, faster than calling the cancelAllNotifications 
         UIApplication.shared.scheduledLocalNotifications = nil
         
         let cells = tableView.visibleCells
@@ -61,25 +60,11 @@ class MainAlarmViewController: UITableViewController{
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    /*
-    override func setEditing(editing: Bool, animated: Bool) {
-        super.setEditing(editing,  animated: animated)
-        let cells = tableView.visibleCells() as? [UITableViewCell]
-        if cells != nil{
-
-            for cell in cells!
-            {
-                cell.userInteractionEnabled = editing ? true : false
-            }
-        }
-    }
-    */
 
     
-    // MARK: - Table view data source
+    // Table view data source
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
@@ -138,12 +123,10 @@ class MainAlarmViewController: UITableViewController{
 
   
 
-        // Configure the cell...
+        // Configure the cell
         
         let sw = UISwitch(frame: CGRect())
-        //sw.transform = CGAffineTransformMakeScale(0.9, 0.9);
-        
-        //tag is used to indicate which row had been touched
+
         sw.tag = indexPath.row
         cell!.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
         sw.addTarget(self, action: #selector(MainAlarmViewController.switchTapped(_:)), for: UIControlEvents.touchUpInside)
@@ -154,17 +137,12 @@ class MainAlarmViewController: UITableViewController{
         cell!.accessoryView = sw
         
         
-        //delete empty seperator line
+        //delete empty separator line
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         return cell!
     }
-    /*
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.
-    }
-    */
-    
+
     
     
     @IBAction func switchTapped(_ sender: UISwitch)
@@ -206,11 +184,11 @@ class MainAlarmViewController: UITableViewController{
             tableView.deleteRows(at: [indexPath], with: .fade)
             
         } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            // pass
         }    
     }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // storyboard-based application preparation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

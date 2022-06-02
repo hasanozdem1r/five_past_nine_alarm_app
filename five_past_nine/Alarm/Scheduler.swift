@@ -67,17 +67,15 @@ class Scheduler : AlarmSchedulerDelegate
         
         let flags: NSCalendar.Unit = [NSCalendar.Unit.weekday, NSCalendar.Unit.weekdayOrdinal, NSCalendar.Unit.day]
         let dateComponents = (calendar as NSCalendar).components(flags, from: date)
-        //var nowComponents = calendar.components(flags, fromDate: now)
         let weekday:Int = dateComponents.weekday!
         
         if weekdays.isEmpty{
-            //date is eariler than current time
+            //date is earlier than current time
             if date.compare(now) == ComparisonResult.orderedAscending
             {
                 
                 correctedDate.append((calendar as NSCalendar).date(byAdding: NSCalendar.Unit.day, value: 1, to: date, options:.matchStrictly)!)
             }
-                //later
             else
             {
                 correctedDate.append(date)
@@ -92,7 +90,6 @@ class Scheduler : AlarmSchedulerDelegate
             {
                 
                 var wdDate: Date!
-                //if date.compare(now) == NSComparisonResult.OrderedAscending
                 if wd < weekday
                 {
                     
@@ -127,10 +124,7 @@ class Scheduler : AlarmSchedulerDelegate
         AlarmNotification.alertBody = "Wake Up!"
         AlarmNotification.alertAction = "Open App"
         AlarmNotification.category = "myAlarmCategory"
-        //AlarmNotification.applicationIconBadgeNumber = 0
-        //AlarmNotification.repeatCalendar = calendar
-        //TODO, not working
-        //AlarmNotification.repeatInterval = NSCalendarUnit.CalendarUnitWeekOfYear
+        //todo not working
         AlarmNotification.soundName = soundName + ".mp3"
         AlarmNotification.timeZone = TimeZone.current
         AlarmNotification.userInfo = ["snooze" : snooze, "index": index, "soundName": soundName]

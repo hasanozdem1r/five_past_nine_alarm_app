@@ -57,11 +57,6 @@ class WeekdaysViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
     }
 
@@ -91,8 +86,6 @@ class WeekdaysViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)!
         
-        //for swift 1.2, if you are using swift 2.0, use indexOf:. method instead
-        
         if let index = Global.weekdays.index(of: (indexPath.row + 1)){
           Global.weekdays.remove(at: index)
             cell.setSelected(true, animated: true)
@@ -100,9 +93,7 @@ class WeekdaysViewController: UITableViewController {
             cell.accessoryType = UITableViewCellAccessoryType.none
         }
         else{
-            //row index start from 0, weekdays index start from 1 (Sunday), so plus 1
             Global.weekdays.append(indexPath.row + 1)
-            //Alarms.sharedInstance[Global.indexOfCell].repeatWeekdays.append(indexPath.row + 1)
             cell.setSelected(true, animated: true)
             cell.setSelected(false, animated: true)
             cell.accessoryType = UITableViewCellAccessoryType.checkmark

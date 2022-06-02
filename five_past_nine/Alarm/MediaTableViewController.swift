@@ -23,28 +23,20 @@ class MediaTableViewController: UITableViewController, MPMediaPickerControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
+    //  Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         if section == 0
         {
@@ -72,7 +64,7 @@ class MediaTableViewController: UITableViewController, MPMediaPickerControllerDe
         }
         else
         {
-            return "RINGTONS"
+            return "RINGTONES"
         }
     }
     
@@ -157,10 +149,7 @@ class MediaTableViewController: UITableViewController, MPMediaPickerControllerDe
         }
     }
     
-    
-    /*
-    MPMediaPickerControllerDelegate
-    */
+
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems  mediaItemCollection:MPMediaItemCollection) -> Void
     {
         if !mediaItemCollection.items.isEmpty
@@ -169,7 +158,6 @@ class MediaTableViewController: UITableViewController, MPMediaPickerControllerDe
         
             self.mediaItem = aMediaItem
             Alarms.sharedInstance[Global.indexOfCell].mediaID = (self.mediaItem?.value(forProperty: MPMediaItemPropertyPersistentID)) as! String
-            //fillData(aMediaItem);
             self.dismiss(animated: true, completion: nil)
         }
     }

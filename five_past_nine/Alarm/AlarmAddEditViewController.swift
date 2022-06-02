@@ -24,13 +24,6 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate,  UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //let mediaPicker = MPMediaPickerController(mediaTypes: .Music)
-        //mediaPicker.delegate = self
-       // mediaPicker.prompt = "Select any song!"
-       // mediaPicker.allowsPickingMultipleItems = false
-        //presentViewController(mediaPicker, animated: true, completion: nil)
-        // Do any additional setup after loading the view.
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +39,6 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate,  UITabl
     
     @IBAction func saveEditAlarm(_ sender: AnyObject) {
         let date = datePicker.date
-        //let timeStr = NSDateFormatter.localizedStringFromDate(date, dateStyle: .NoStyle, timeStyle: .ShortStyle)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let timeStr = dateFormatter.string(from: date)
@@ -59,15 +51,12 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate,  UITabl
             Alarms.sharedInstance.setLabel(Global.label, AtIndex: Global.indexOfCell)
             Alarms.sharedInstance.setMediaLabel(Global.mediaLabel, AtIndex: Global.indexOfCell)
             Alarms.sharedInstance.PersistAlarm(Global.indexOfCell)
-            //scheduler.reSchedule()
         }
         else
         {
             Alarms.sharedInstance.append( Alarm(label: Global.label, timeStr: timeStr, date: date,  enabled: false, snoozeEnabled: Global.snoozeEnabled, UUID: UUID().uuidString, mediaID: "", mediaLabel: "bell", repeatWeekdays: Global.weekdays))
         }
         
-        //navigationController?.popViewControllerAnimated(true)
-        //dismissViewControllerAnimated(true, completion: nil)
         scheduler.reSchedule()
         self.performSegue(withIdentifier: "saveEditAlarm", sender: self)
     }
@@ -161,39 +150,6 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate,  UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        /*
-        let title = NSLocalizedString("Choose a Alarm Interval", comment: "")
-        //let message = NSLocalizedString("Choose Interval", comment: "")
-        let onceActionTitle = NSLocalizedString(intervalArray[0], comment: "")
-        let everydayActionTitle = NSLocalizedString(intervalArray[1], comment: "")
-        let weekdayActionTitle = NSLocalizedString(intervalArray[2], comment: "")
-        let weekendActionTitle = NSLocalizedString(intervalArray[3], comment: "")
-        let cancelActionTitle = NSLocalizedString(intervalArray[4], comment: "")
-        
-        let storageController = UIAlertController(title: title, message: nil, preferredStyle: ./*ActionSheet*/Alert)
-            
-        let onceOption = UIAlertAction(title: onceActionTitle, style: .Default) {(action:UIAlertAction!)->Void in self.settingLabelDetail = .Once
-            cell!.detailTextLabel!.text = self.settingLabelDetail.rawValue}
-        storageController.addAction(onceOption)
-            
-        let everydayOption = UIAlertAction(title: everydayActionTitle, style: .Default) {(action:UIAlertAction!)->Void in self.settingLabelDetail = .EveryDay
-            cell!.detailTextLabel!.text = self.settingLabelDetail.rawValue}
-        storageController.addAction(everydayOption)
-            
-        let weekdayOption = UIAlertAction(title: weekdayActionTitle, style: .Default) {(action:UIAlertAction!)->Void in self.settingLabelDetail = .WeekDay
-            cell!.detailTextLabel!.text = self.settingLabelDetail.rawValue}
-        storageController.addAction(weekdayOption)
-            
-        let weekendOption = UIAlertAction(title: weekendActionTitle, style: .Default) {(action:UIAlertAction!)->Void in self.settingLabelDetail = .WeekEnd
-            cell!.detailTextLabel!.text = self.settingLabelDetail.rawValue}
-        storageController.addAction(weekendOption)
-            
-        let cancelOption = UIAlertAction(title: cancelActionTitle, style: .Cancel) {(action:UIAlertAction!)->Void in }
-        storageController.addAction(cancelOption)
-        
-            
-        presentViewController(storageController, animated: true, completion: nil)
-        */
         if indexPath.section == 0
         {
             switch indexPath.row{
