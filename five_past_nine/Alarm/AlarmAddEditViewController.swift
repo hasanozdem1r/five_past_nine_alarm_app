@@ -25,7 +25,8 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate,  UITabl
         super.viewDidLoad()
         
     }
-    
+    // Notifies the view controller that its view is 
+    // about to be added to a view hierarchy.
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -196,9 +197,9 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate,  UITabl
     }
     
     
-    // MARK: - Navigation
+    // Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // need a preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

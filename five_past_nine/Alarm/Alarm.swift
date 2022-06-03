@@ -8,6 +8,7 @@
 import Foundation
 import MediaPlayer
 
+// a struct is used to store variables of different data types
 struct Alarm
 {
     //using member wise initializer for struct
@@ -23,7 +24,7 @@ struct Alarm
 
 }
 
-//singleton, for-in loop supporting
+// for-in loop supporting
 class Alarms: Sequence
 {
     fileprivate let ud:UserDefaults
@@ -97,7 +98,7 @@ class Alarms: Sequence
     {
         alarms.remove(at: index)
     }
-    
+    // subscript  are shortcuts for accessing the member elements of a iterators
     subscript(index: Int) -> Alarm{
         get{
             assert((index < alarms.count && index >= 0), "Index out of range")
