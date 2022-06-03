@@ -25,6 +25,7 @@ struct Alarm
 }
 
 // for-in loop supporting
+// A sequence is a list of values that you can step through one at a time.
 class Alarms: Sequence
 {
     fileprivate let ud:UserDefaults
@@ -48,7 +49,7 @@ class Alarms: Sequence
         alarms.append(alarm)
         PersistAlarm(alarm, index: alarms.count-1)
     }
-    
+    // persisting alarm
     func PersistAlarm(_ alarm: Alarm, index: Int)
     {
         var alarmArray = ud.array(forKey: alarmKey) ?? []
@@ -57,7 +58,7 @@ class Alarms: Sequence
         ud.set(alarmArray, forKey: alarmKey)
         ud.synchronize()
     }
-    
+    // overloading persist alarm
     func PersistAlarm(_ index: Int)
     {
         var alarmArray = ud.array(forKey: alarmKey) ?? []
@@ -65,7 +66,7 @@ class Alarms: Sequence
         ud.set(alarmArray, forKey: alarmKey)
         ud.synchronize()
     }
-    
+    // deleting alarm
     func deleteAlarm(_ index: Int)
     {
         var alarmArray = ud.array(forKey: alarmKey) ?? []
@@ -88,12 +89,12 @@ class Alarms: Sequence
             return [Alarm]()
         }
     }
-    
+    // alarm.count getter
     var count:Int
     {
         return alarms.count
     }
-    
+    // delete alarm from given index
     func removeAtIndex(_ index: Int)
     {
         alarms.remove(at: index)
@@ -110,77 +111,77 @@ class Alarms: Sequence
         }
 
     }
-    //helpers for alarm edit
+    // label getter
     func labelAtIndex(_ index: Int) -> String
     {
         return alarms[index].label
     }
-    
+    // time getter
     func timeStrAtIndex(_ index: Int) -> String
     {
         return alarms[index].timeStr
     }
-    
+    // date getter
     func dateAtIndex(_ index: Int) -> Date
     {
         return alarms[index].date
     }
-    
+    // UUID getter
     func UUIDAtIndex(_ index: Int) -> String
     {
         return alarms[index].UUID
     }
-    
+    // enable alarm for given index
     func enabledAtIndex(_ index: Int) -> Bool
     {
         return alarms[index].enabled
     }
-    
+    // mediaID getter
     func mediaIDAtIndex(_ index: Int) -> String
     {
         return alarms[index].mediaID
     }
-    
+    // label setter
     func setLabel(_ label: String, AtIndex index: Int)
     {
         alarms[index].label = label
     }
-    
+    // date setter
     func setDate(_ date: Date, AtIndex index: Int)
     {
         alarms[index].date = date
     }
-    
+    // time setter
     func setTimeStr(_ timeStr: String, AtIndex index: Int)
     {
         alarms[index].timeStr = timeStr
     }
-    
+    // mediaID setter
     func setMediaID(_ mediaID: String, AtIndex index: Int)
     {
         alarms[index].mediaID = mediaID
     }
-    
+    // mediaLabel setter
     func setMediaLabel(_ mediaLabel: String, AtIndex index: Int)
     {
         alarms[index].mediaLabel = mediaLabel
     }
-    
+    // enable/disable alarm
     func setEnabled(_ enabled: Bool, AtIndex index: Int)
     {
         alarms[index].enabled = enabled
     }
-    
+    // enable/disable snooze
     func setSnooze(_ snoozeEnabled: Bool, AtIndex index: Int)
     {
         alarms[index].snoozeEnabled = snoozeEnabled
     }
-    
+    // weekdays setter
     func setWeekdays(_ weekdays: [Int], AtIndex index: Int)
     {
         alarms[index].repeatWeekdays = weekdays
     }
-    
+    // check whether alarms empty or not
     var isEmpty: Bool
     {
         return alarms.isEmpty
