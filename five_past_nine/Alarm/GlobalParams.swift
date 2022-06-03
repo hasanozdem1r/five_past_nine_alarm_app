@@ -5,6 +5,11 @@
 //  Hasan Özdemir
 // 
 
+/*
+When importing the Foundation framework, 
+the Swift overlay provides value types 
+for many bridged reference types.
+*/
 import Foundation
 
 class Global

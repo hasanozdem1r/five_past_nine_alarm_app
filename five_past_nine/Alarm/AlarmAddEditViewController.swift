@@ -181,7 +181,7 @@ class AlarmAddEditViewController: UIViewController, UITableViewDelegate,  UITabl
         }
             
     }
-   
+    
     @IBAction func snoozeSwitchTapped (_ sender: UISwitch)
     {
        
